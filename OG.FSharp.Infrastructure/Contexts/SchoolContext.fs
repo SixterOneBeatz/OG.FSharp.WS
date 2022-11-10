@@ -1,8 +1,8 @@
-﻿namespace OG.FSharp.API.Context
+﻿namespace OG.FSharp.Infrastructure.Context
 
 open Microsoft.EntityFrameworkCore
 open EntityFrameworkCore.FSharp.Extensions
-open OG.FSharp.API.Domain.SchoolDomain
+open OG.FSharp.Domain.Models.Person
 
 type SchoolContext =
     inherit DbContext

@@ -5,7 +5,8 @@ open Microsoft.EntityFrameworkCore;
 open Microsoft.Extensions.Configuration;
 open Microsoft.Extensions.DependencyInjection
 open Microsoft.Extensions.Hosting
-open OG.FSharp.API.Context
+open OG.FSharp.InfrastructureServiceRegistration
+open OG.FSharp.ApplicationServiceRegistration
 
 module Program =
     let exitCode = 0
@@ -18,10 +19,8 @@ module Program =
         let configuration = builder.Configuration
 
         builder.Services.AddControllers()
-        builder.Services.AddDbContext<SchoolContext>(
-            fun options -> 
-                options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")) 
-                |> ignore)
+        builder.Services.AddApplication()
+        builder.Services.AddInfrastructure(configuration)
 
         let app = builder.Build()
 
